@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject target;
     public GameObject bullet;
-    public int numberBullet = 1;
     public float speedBullet = 1f;
     public float heal = 100;
 
@@ -41,7 +40,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D))
         {
             gameObject.transform.Rotate(0, 0, 90);
-            target.transform.Rotate(0, 0, 90);
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
