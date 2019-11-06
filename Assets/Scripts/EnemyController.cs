@@ -6,11 +6,13 @@ public class EnemyController : MonoBehaviour
 {
     public GameObject target;
     public GameObject bullet;
-    private float speedShip = 5f;
     public float speedBullet = 10f;
     public float heal = 100;
 
     private float lastTimeFire = 0;
+    private bool isMove = true;
+    private bool isLeft = false;
+    private bool isRight = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,17 +32,18 @@ public class EnemyController : MonoBehaviour
 
     void changeSpirtePlayer()
     {
-        float vertical = Input.GetAxisRaw("Vertical");
-        if (Input.GetKeyDown(KeyCode.D))
+        if (isRight)
         {
             gameObject.transform.Rotate(0, 0, 90);
+            isRight = false;
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (isLeft)
         {
             gameObject.transform.Rotate(0, 0, -90);
+            isLeft = false;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (isMove)
         {
             Vector3 transformVec = (target.transform.position - gameObject.transform.position) * Time.deltaTime;
             gameObject.transform.position += transformVec;
