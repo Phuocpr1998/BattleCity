@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7254732924200633457}
   - component: {fileID: 7254732924200633460}
   - component: {fileID: 2948802977801894492}
+  - component: {fileID: 3142624691395612920}
   m_Layer: 0
   m_Name: enemy
   m_TagString: enemy
@@ -58,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 7254732924200633459}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.832, y: -0.042, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7254732924152267589}
   m_Father: {fileID: 0}
@@ -102,16 +103,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3206531110674126801, guid: 5f3a5e647651cbd479704b0d61f98919,
-    type: 3}
+  m_Sprite: {fileID: 21300024, guid: 359af67a3c6b6b940b1fa04007d166ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.26, y: 0.3}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &7254732924200633460
@@ -127,18 +127,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00000010430813, y: 0.02525574}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.26, y: 0.3}
-    newSize: {x: 0.26, y: 0.3}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.26, y: 0.3}
+  m_Size: {x: 0.92675984, y: 1.0576814}
   m_EdgeRadius: 0
 --- !u!114 &2948802977801894492
 MonoBehaviour:
@@ -156,3 +156,24 @@ MonoBehaviour:
   bullet: {fileID: 164531115807785524, guid: 3daf272cde0ea2a4a9045c5bc6884472, type: 3}
   speedBullet: 10
   heal: 100
+--- !u!50 &3142624691395612920
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7254732924200633459}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

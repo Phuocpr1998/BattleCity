@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -12,11 +13,13 @@ public class EnemyController : MonoBehaviour
     private float lastTimeFire = 0;
     private bool isMove = true;
     private bool isLeft = false;
-    private bool isRight = false;
 
     // Start is called before the first frame update
     void Start()
-    {}
+    {
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
+        gameObject.GetComponent<Rigidbody2D>().fixedAngle = true;
+    }
 
     // Update is called once per frame
     void Update()
@@ -32,12 +35,7 @@ public class EnemyController : MonoBehaviour
 
     void changeSpirtePlayer()
     {
-        if (isRight)
-        {
-            gameObject.transform.Rotate(0, 0, 90);
-            isRight = false;
-        }
-        else if (isLeft)
+        if (isLeft)
         {
             gameObject.transform.Rotate(0, 0, -90);
             isLeft = false;
@@ -45,8 +43,8 @@ public class EnemyController : MonoBehaviour
 
         if (isMove)
         {
-            Vector3 transformVec = (target.transform.position - gameObject.transform.position) * Time.deltaTime;
-            gameObject.transform.position += transformVec;
+            Vector3 transformVec = target.transform.position - gameObject.transform.position;
+            gameObject.GetComponent<Rigidbody2D>().velocity = transformVec * 2;
         }
     }
 
@@ -56,5 +54,32 @@ public class EnemyController : MonoBehaviour
         b.transform.position = gameObject.transform.position;
         b.GetComponent<BulletEnemyController>().targetPosition = target.transform.position;
         b.GetComponent<BulletEnemyController>().moveSpeed = speedBullet;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        isLeft = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "bullet")
+        {
+            heal -= collision.gameObject.GetComponent<BulletController>().heal;
+            if (heal <= 0)
+            {
+                Destroy(gameObject);
+                GameObject numberEnemy = GameObject.FindGameObjectWithTag("numberEnemy");
+                numberEnemy.GetComponent<Text>().text = (GameObject.FindGameObjectsWithTag("enemy").Length - 1).ToString();
+                if (GameObject.FindGameObjectsWithTag("enemy").Length == 1)
+                {
+                    GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+                    if (gameController != null)
+                    {
+                        gameController.GetComponent<GameControler>().NextMap();
+                    }
+                }
+            }
+        }
     }
 }

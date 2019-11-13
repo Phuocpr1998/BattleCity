@@ -136,4 +136,4 @@ MonoBehaviour:
   explode: {fileID: 8905812836857190601, guid: bc661903419d2c94dbc811703a3544a8, type: 3}
   targetPosition: {x: 0, y: 0, z: 0}
   moveSpeed: 10
-  heal: 10
+  heal: 100
